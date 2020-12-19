@@ -45,3 +45,4 @@ $ yarn tsc
 
 # Rodando o programa via Node.js
 $ node dist/index.js
+```
