@@ -34,7 +34,7 @@ function openAnswerInBrowser(query: string) {
 
     $(pageData).find('a').each((i, el) => {
       const href = $(el).attr('href');
-      if (href?.includes('brainly') && !href?.includes('https://webcache.googleusercontent.com') && !href?.includes('https://translate.google.com')) {
+      if (href?.includes('brainly') && !href?.includes('https://webcache.googleusercontent.com') && !href?.includes('https://translate.google.com') && !href.startsWith('/search?q')) {
         uris.push(href);
       }
     });
