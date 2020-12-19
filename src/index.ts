@@ -62,6 +62,7 @@ printAsciiLogo();
 console.log(chalk.green('🔥 Ouvindo por alterações no clipboard.'));
 
 // Começamos o loop a cada 0.2s
+
 /*
  O programa não fica spammando janelas no navegador do usuário pois nós escrevemos uma string vazia
  no clipboard logo depois que nós armazenamos o texto, então o programa não fica abrindo uma janela
