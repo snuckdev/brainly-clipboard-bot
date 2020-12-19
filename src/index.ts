@@ -48,7 +48,7 @@ function openAnswerInBrowser(query: string) {
 
       open(uris[0]);
     } else {
-      console.log(chalk.red('\n\n✖ Nenhuma resposta encontrada que contenha Brainly no link.'));
+      console.log(chalk.red('✖ Nenhuma resposta encontrada que contenha Brainly no link.'));
     }
   });
 }
