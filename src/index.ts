@@ -41,7 +41,7 @@ function openAnswerInBrowser(query: string) {
 }
 
 // Criamos uma array com as perguntas que já foram pesquisadas
-const linksPesquisados: string[] = [];
+const searchedLinks: string[] = [];
 
 console.log('Ouvindo por alterações no clipboard.');
 
@@ -55,9 +55,9 @@ setInterval(() => {
 
     try {
       [text] = text.split('\n');
-      if (!linksPesquisados.includes(text)) {
+      if (!searchedLinks.includes(text)) {
         openAnswerInBrowser(text);
-        linksPesquisados.push(text);
+        searchedLinks.push(text);
       }
     } catch (err) {
       console.log('Error');
