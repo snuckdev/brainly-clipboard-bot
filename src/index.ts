@@ -70,12 +70,15 @@ console.log(chalk.green('\n\n🔥 Ouvindo por alterações no clipboard.'));
 */
 
 setInterval(() => {
-  const text = clipboardy.readSync();
+  let text = clipboardy.readSync();
   if (text) {
+    // eslint-disable-next-line prefer-destructuring
+    text = text.split('\n')[0];
+
     console.log(chalk.green(`\n\n❔ Pergunta: ${text}`));
 
     if (linksPesquisados.includes(text)) {
-      console.log(chalk.red('\n\n✖ Essa pergunta já foi respondida, se deseja que ela seja respondida novamente, reinicie a aplicação.'));
+      console.log(chalk.red('✖ Essa pergunta já foi respondida, se deseja que ela seja respondida novamente, reinicie a aplicação.'));
     }
 
     clipboardy.writeSync('');
