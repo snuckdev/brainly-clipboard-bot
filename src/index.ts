@@ -8,6 +8,18 @@ const headers = {
   'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Safari/537.36',
 };
 
+function printAsciiLogo() {
+  console.log(`
+  ██████╗ ██████╗  █████╗ ██╗███╗   ██╗██╗  ██╗   ██╗      ██╗     ██╗███████╗████████╗███████╗███╗   ██╗███████╗██████╗  ${chalk.blue('████████╗███████╗')}
+  ██╔══██╗██╔══██╗██╔══██╗██║████╗  ██║██║  ╚██╗ ██╔╝      ██║     ██║██╔════╝╚══██╔══╝██╔════╝████╗  ██║██╔════╝██╔══██╗ ${chalk.blue('╚══██╔══╝██╔════╝')}
+  ██████╔╝██████╔╝███████║██║██╔██╗ ██║██║   ╚████╔╝█████╗ ██║     ██║███████╗   ██║   █████╗  ██╔██╗ ██║█████╗  ██████╔╝ ${chalk.blue('   ██║   ███████╗')}
+  ██╔══██╗██╔══██╗██╔══██║██║██║╚██╗██║██║    ╚██╔╝ ╚════╝ ██║     ██║╚════██║   ██║   ██╔══╝  ██║╚██╗██║██╔══╝  ██╔══██╗ ${chalk.blue('   ██║   ╚════██║')}
+  ██████╔╝██║  ██║██║  ██║██║██║ ╚████║███████╗██║         ███████╗██║███████║   ██║   ███████╗██║ ╚████║███████╗██║  ██║ ${chalk.blue('   ██║   ███████║')}
+  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝╚═╝         ╚══════╝╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ${chalk.blue('   ╚═╝   ╚══════╝')}
+                                                                                                                                                                                                                       
+  `);
+}
+
 function getRequestUrl(query: string) {
   const baseUrl = `https://www.google.com/search?sxsrf=ALeKk02hgZQm-GEdAwirFIHl6CSgPEOUZg%3A1608338316761&source=hp&ei=jEvdX_3aK_uz5OUPo_yU0AU&q=${query}&oq=${query}&gs_lcp=CgZwc3ktYWIQAzIFCAAQsQMyBQgAELEDMgUIABCxAzIFCAAQsQMyAggAMgIIADICCAAyAggAMgUIABCxAzICCAA6BwgjEOoCECc6BggjECcQEzoECCMQJzoICAAQsQMQgwE6BQguELEDOggIABDHARCvAToLCAAQsQMQxwEQowI6BAgAEEM6CAguELEDEIMBOggIABDHARCjAjoHCAAQsQMQQzoFCAAQywE6BggAEBYQHlCgCFiYGmCDPmgIcAB4AIAB1gGIAaMOkgEGMS4xMS4xmAEAoAEBqgEHZ3dzLXdperABCg&sclient=psy-ab&ved=0ahUKEwj90K-Q59jtAhX7GbkGHSM-BVoQ4dUDCAc&uact=5`;
   return encodeURI(baseUrl);
@@ -28,7 +40,7 @@ function openAnswerInBrowser(query: string) {
     });
 
     if (uris.length !== 0) {
-      console.log(chalk.green('\n\nLinks encontrados:'));
+      console.log(chalk.green('\nLinks encontrados:'));
 
       uris.forEach((uri) => {
         console.log(chalk.green(uri));
@@ -41,16 +53,19 @@ function openAnswerInBrowser(query: string) {
   });
 }
 
+console.clear();
+
 // Criamos uma array com as perguntas que já foram pesquisadas
 const linksPesquisados: string[] = [];
 
+printAsciiLogo();
 console.log(chalk.green('Ouvindo por alterações no clipboard.'));
 
 // Começamos o loop a cada 0.2s
 setInterval(() => {
   const text = clipboardy.readSync();
   if (text) {
-    console.log(chalk.green(`\n\nPergunta: ${text}`));
+    console.log(chalk.green(`\nPergunta: ${text}`));
 
     if (linksPesquisados.includes(text)) {
       console.log(chalk.red('\nEssa pergunta já foi respondida, se deseja que ela seja respondida novamente, reinicie a aplicação.'));
