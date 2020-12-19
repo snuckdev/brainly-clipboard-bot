@@ -34,7 +34,7 @@ function openAnswerInBrowser(query: string) {
 
     $(pageData).find('a').each((i, el) => {
       const href = $(el).attr('href');
-      if (href?.includes('brainly')) {
+      if (href?.includes('brainly') && !href?.includes('https://webcache.googleusercontent.com') && !href?.includes('https://translate.google.com')) {
         uris.push(href);
       }
     });
@@ -59,16 +59,16 @@ console.clear();
 const linksPesquisados: string[] = [];
 
 printAsciiLogo();
-console.log(chalk.green('Ouvindo por alterações no clipboard.'));
+console.log(chalk.green('Ouvindo por alterações no clipboard.\n'));
 
 // Começamos o loop a cada 0.2s
 setInterval(() => {
   const text = clipboardy.readSync();
   if (text) {
-    console.log(chalk.green(`\nPergunta: ${text}`));
+    console.log(chalk.green(`Pergunta: ${text}\n`));
 
     if (linksPesquisados.includes(text)) {
-      console.log(chalk.red('\nEssa pergunta já foi respondida, se deseja que ela seja respondida novamente, reinicie a aplicação.'));
+      console.log(chalk.red('Essa pergunta já foi respondida, se deseja que ela seja respondida novamente, reinicie a aplicação.'));
     }
 
     clipboardy.writeSync('');
