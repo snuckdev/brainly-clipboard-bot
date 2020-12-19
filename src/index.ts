@@ -80,7 +80,7 @@ setInterval(() => {
         openAnswerInBrowser(text);
       }
     } catch (err) {
-      console.log('Error');
+      if (err) throw err;
     }
   }
 }, 200);
