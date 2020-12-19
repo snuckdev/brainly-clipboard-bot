@@ -26,7 +26,7 @@ $ yarn start
 $ npx start
 ```
 
-## 🎉 Convertendo projeto para TypeScript
+## 🎉 Convertendo projeto para JavaScript
 ```bash
 
 # Clonando o repositório
