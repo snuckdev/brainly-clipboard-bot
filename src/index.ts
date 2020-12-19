@@ -40,16 +40,15 @@ function openAnswerInBrowser(query: string) {
     });
 
     if (uris.length !== 0) {
-      console.log(chalk.green('\nLinks encontrados:'));
+      console.log(chalk.green('✔ Links encontrados:'));
 
       uris.forEach((uri) => {
         console.log(chalk.green(uri));
       });
-      console.log('\n');
 
       open(uris[0]);
     } else {
-      console.log(chalk.red('Nenhuma resposta encontrada que contenha Brainly no link.\n'));
+      console.log(chalk.red('✖ Nenhuma resposta encontrada que contenha Brainly no link.'));
     }
   });
 }
@@ -60,16 +59,16 @@ console.clear();
 const linksPesquisados: string[] = [];
 
 printAsciiLogo();
-console.log(chalk.green('Ouvindo por alterações no clipboard.\n'));
+console.log(chalk.green('🔥 Ouvindo por alterações no clipboard.'));
 
 // Começamos o loop a cada 0.2s
 setInterval(() => {
   const text = clipboardy.readSync();
   if (text) {
-    console.log(chalk.green(`Pergunta: ${text}\n`));
+    console.log(chalk.green(`Pergunta: ${text}`));
 
     if (linksPesquisados.includes(text)) {
-      console.log(chalk.red('Essa pergunta já foi respondida, se deseja que ela seja respondida novamente, reinicie a aplicação.\n'));
+      console.log(chalk.red('✖ Essa pergunta já foi respondida, se deseja que ela seja respondida novamente, reinicie a aplicação.'));
     }
 
     clipboardy.writeSync('');
