@@ -45,6 +45,7 @@ function openAnswerInBrowser(query: string) {
       uris.forEach((uri) => {
         console.log(chalk.green(uri));
       });
+      console.log('\n');
 
       open(uris[0]);
     } else {
