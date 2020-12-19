@@ -41,23 +41,27 @@ function openAnswerInBrowser(query: string) {
 }
 
 // Criamos uma array com as perguntas que já foram pesquisadas
-const searchedLinks: string[] = [];
+const linksPesquisados: string[] = [];
 
 console.log('Ouvindo por alterações no clipboard.');
 
 // Começamos o loop a cada 0.2s
 setInterval(() => {
-  let text = clipboardy.readSync();
+  const text = clipboardy.readSync();
   if (text) {
     console.log(`\n\nPergunta: ${text}`);
+
+    if (linksPesquisados.includes(text)) {
+      console.log('\nEssa pergunta já foi respondida, se deseja que ela seja respondida novamente, reinicie a aplicação.');
+    }
 
     clipboardy.writeSync('');
 
     try {
-      [text] = text.split('\n');
-      if (!searchedLinks.includes(text)) {
+      // eslint-disable-next-line prefer-destructuring
+      if (!linksPesquisados.includes(text)) {
+        linksPesquisados.push(text);
         openAnswerInBrowser(text);
-        searchedLinks.push(text);
       }
     } catch (err) {
       console.log('Error');
