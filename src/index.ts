@@ -20,7 +20,7 @@ function openAnswerInBrowser(query: string) {
     const pageData = response.data;
     const $ = cheerio.load(pageData);
 
-    $('#rso > div > div:nth-child(1) > div').find('a').each((i, el) => {
+    $(pageData).find('a').each((i, el) => {
       const href = $(el).attr('href');
       if (href?.includes('brainly')) {
         uris.push(href);
