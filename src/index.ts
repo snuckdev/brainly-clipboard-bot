@@ -27,7 +27,7 @@ function openAnswerInBrowser(query: string) {
     });
 
     if (uris.length !== 0) {
-      console.log('\n\n');
+      console.log('\n\nLinks encontrados:');
 
       uris.forEach((uri) => {
         console.log(uri);
@@ -41,7 +41,7 @@ function openAnswerInBrowser(query: string) {
 }
 
 // Criamos uma array com as perguntas que já foram pesquisadas
-const searchedLinks: string[] = [];
+const linksPesquisados: string[] = [];
 
 console.log('Ouvindo por alterações no clipboard.');
 
@@ -51,17 +51,13 @@ setInterval(() => {
   if (text) {
     console.log(`\n\nPergunta: ${text}`);
 
-    if (searchedLinks.includes(text)) {
-      console.log('Essa pergunta já foi respondida, se deseja que ela seja respondida novamente, reinicie a aplicação.');
-    }
-
     clipboardy.writeSync('');
 
     try {
       [text] = text.split('\n');
-      if (!searchedLinks.includes(text)) {
+      if (!linksPesquisados.includes(text)) {
         openAnswerInBrowser(text);
-        searchedLinks.push(text);
+        linksPesquisados.push(text);
       }
     } catch (err) {
       console.log('Error');
