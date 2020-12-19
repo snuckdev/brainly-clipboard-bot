@@ -65,7 +65,7 @@ console.log(chalk.green('🔥 Ouvindo por alterações no clipboard.'));
 setInterval(() => {
   const text = clipboardy.readSync();
   if (text) {
-    console.log(chalk.green(`Pergunta: ${text}`));
+    console.log(chalk.green(`❔ Pergunta: ${text}`));
 
     if (linksPesquisados.includes(text)) {
       console.log(chalk.red('✖ Essa pergunta já foi respondida, se deseja que ela seja respondida novamente, reinicie a aplicação.'));
