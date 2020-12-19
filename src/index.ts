@@ -9,8 +9,8 @@ const headers = {
 };
 
 function getRequestUrl(query: string) {
-  const baseUrl = `https://www.google.com/search?sxsrf=ALeKk02hgZQm-GEdAwirFIHl6CSgPEOUZg%3A1608338316761&source=hp&ei=jEvdX_3aK_uz5OUPo_yU0AU&q=${encodeURI(query)}&oq=${encodeURI(query)}&gs_lcp=CgZwc3ktYWIQAzIFCAAQsQMyBQgAELEDMgUIABCxAzIFCAAQsQMyAggAMgIIADICCAAyAggAMgUIABCxAzICCAA6BwgjEOoCECc6BggjECcQEzoECCMQJzoICAAQsQMQgwE6BQguELEDOggIABDHARCvAToLCAAQsQMQxwEQowI6BAgAEEM6CAguELEDEIMBOggIABDHARCjAjoHCAAQsQMQQzoFCAAQywE6BggAEBYQHlCgCFiYGmCDPmgIcAB4AIAB1gGIAaMOkgEGMS4xMS4xmAEAoAEBqgEHZ3dzLXdperABCg&sclient=psy-ab&ved=0ahUKEwj90K-Q59jtAhX7GbkGHSM-BVoQ4dUDCAc&uact=5`;
-  return baseUrl;
+  const baseUrl = `https://www.google.com/search?sxsrf=ALeKk02hgZQm-GEdAwirFIHl6CSgPEOUZg%3A1608338316761&source=hp&ei=jEvdX_3aK_uz5OUPo_yU0AU&q=${query}&oq=${query}&gs_lcp=CgZwc3ktYWIQAzIFCAAQsQMyBQgAELEDMgUIABCxAzIFCAAQsQMyAggAMgIIADICCAAyAggAMgUIABCxAzICCAA6BwgjEOoCECc6BggjECcQEzoECCMQJzoICAAQsQMQgwE6BQguELEDOggIABDHARCvAToLCAAQsQMQxwEQowI6BAgAEEM6CAguELEDEIMBOggIABDHARCjAjoHCAAQsQMQQzoFCAAQywE6BggAEBYQHlCgCFiYGmCDPmgIcAB4AIAB1gGIAaMOkgEGMS4xMS4xmAEAoAEBqgEHZ3dzLXdperABCg&sclient=psy-ab&ved=0ahUKEwj90K-Q59jtAhX7GbkGHSM-BVoQ4dUDCAc&uact=5`;
+  return encodeURI(baseUrl);
 }
 
 function openAnswerInBrowser(query: string) {
